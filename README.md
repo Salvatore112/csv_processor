@@ -1,5 +1,8 @@
 # Скрипт для обработки CSV-файлов
 
+[![CI](https://github.com/Salvatore112/csv_processor/actions/workflows/ci.yml/badge.svg)](https://github.com/Salvatore112/short_link/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Скрипт для обработки CSV-файла, который поддерживает следующие операции:
 
 ### Фильтрация

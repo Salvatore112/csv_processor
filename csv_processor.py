@@ -162,29 +162,34 @@ class CSVProcessor:
                 print("+" + "-" * (max_length + 2) + "+")
 
 
-parser = argparse.ArgumentParser(description="Process CSV file")
-parser.add_argument("--file", required=True, help="Path to CSV file")
-parser.add_argument("--where", help='Filter condition (e.g. "rating>4.5")')
-parser.add_argument("--order-by", help='Sort by column (e.g. "rating=desc")')
-parser.add_argument("--aggregate", help='Aggregation (e.g. "price=avg")')
+def main():
+    parser = argparse.ArgumentParser(description="Process CSV file")
+    parser.add_argument("--file", required=True, help="Path to CSV file")
+    parser.add_argument("--where", help='Filter condition (e.g. "rating>4.5")')
+    parser.add_argument("--order-by", help='Sort by column (e.g. "rating=desc")')
+    parser.add_argument("--aggregate", help='Aggregation (e.g. "price=avg")')
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-try:
-    processor = CSVProcessor(args.file)
+    try:
+        processor = CSVProcessor(args.file)
 
-    data = processor.data
-    if args.where:
-        data = processor.filter_data(args.where, data)
+        data = processor.data
+        if args.where:
+            data = processor.filter_data(args.where, data)
 
-    if args.order_by:
-        data = processor.sort_data(args.order_by, data)
+        if args.order_by:
+            data = processor.sort_data(args.order_by, data)
 
-    if args.aggregate:
-        result = processor.aggregate(args.aggregate, data)
-        processor.display_results(result)
-    else:
-        processor.display_results(data)
+        if args.aggregate:
+            result = processor.aggregate(args.aggregate, data)
+            processor.display_results(result)
+        else:
+            processor.display_results(data)
 
-except Exception as e:
-    print(f"Error: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()
